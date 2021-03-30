@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import RunAlgButton from "./RunAlgButton";
 import { v4 as uuidv4 } from "uuid";
 
@@ -31,6 +31,9 @@ function Dashboard() {
     7
   ]);
   const [indexesScanned, setIndexesScanned] = useState(0)
+
+  // Define ref array
+  // const barRefs = useRef([]);
   
 
   let max = numberArray.reduce(function(a, b){
@@ -52,14 +55,14 @@ function Dashboard() {
 
   useEffect(() => {
     //   Render bars when state changes
-    console.log("USE EFFECT");
     // renderBars = numberArray.map((num, index) => <NumberBar key={uuidv4()} index={index} />);
-
+    
+    // console.log(barRefs)
   }, [numberArray]);
 
   //   Render functions
   // Render bars
-  // const renderBars = numberArray.map((num, index) => <NumberBar key={uuidv4()} index={index} />);
+
 
   // Render numbers
   const renderNumbers = numberArray.map((num, index) => { 
@@ -84,13 +87,7 @@ function Dashboard() {
         {
           numberArray.map((num, index) => <NumberBar key={uuidv4()} index={index} indexesScanned={indexesScanned} maxNumber={maxNumber} num={num} />)
         }
-        {/* {numberArray.map((num, i) => {
-          return (
-            <div key={uuidv4()} className="bar">
-              1
-            </div>
-          );
-        })} */}
+
       </div>
       <div className="number-container">
         {renderNumbers}
